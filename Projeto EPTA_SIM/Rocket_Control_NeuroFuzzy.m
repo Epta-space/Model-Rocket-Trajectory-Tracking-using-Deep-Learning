@@ -16,10 +16,8 @@ g = 9.81;                           % Gravidade [m/s^2]
 q_bar_1 = 0.5*rho*U_1^2;            % Pressão dinâmica
 theta_1 = alpha_1;
 
-
 lamb = Ct/Cr;                                   % Relação de Afilamento
 c_bar = (2/3)*Cr*((1+lamb+lamb^2)/(1+lamb));    % Corda média aerodinâmica [m]
-
 
 I_xx = 0.0012;                      % Componente inercial Ixx [Kg*m^2]
 I_yy = 0.2248;                      % Componente inercial Iyy [Kg*m^2]
@@ -30,16 +28,16 @@ I_xz = 0;
 %% Dinâmica Longitudinal
 
 % Derivatives
-C_D_u = -0.016;                     % Taxa de variação do arrasto em função do mach [regressão/datcom]
-C_D_1 = 0.027;                      % Taxa de variação do arrasto em função da condição de trimagem [datcom direto]
-C_D_alpha = 0;                      % Taxa de variação do arrasto em função do ângulo de ataque [Regressão/datcom ou aerolab]
-C_D_de = 0;                         % Taxa de variação do arrasto em função do ângulo de deflexão [regressão/datcom]
+C_D_u = -0.016;              % Taxa de variação do arrasto em função do mach [regressão/datcom]
+C_D_1 = 0.027;               % Taxa de variação do arrasto em função da condição de trimagem [datcom direto]
+C_D_alpha = 0;               % Taxa de variação do arrasto em função do ângulo de ataque [Regressão/datcom ou aerolab]
+C_D_de = 0;                  % Taxa de variação do arrasto em função do ângulo de deflexão [regressão/datcom]
  
 C_T_x_u = 0;
 C_T_x_1 = 0;
  
-C_L_1 = 0.06;                       % Taxa de variação da sustentação em função da condição de trimagem [datcom direto]
-C_L_u = 0.006;                      % Taxa de variação do sustentação em função do mach [regressão/datcom]
+C_L_1 = 0.06;                % Taxa de variação da sustentação em função da condição de trimagem [datcom direto]
+C_L_u = 0.006;               % Taxa de variação do sustentação em função do mach [regressão/datcom]
 C_L_alpha = 0.0305;
 C_L_alpha_dot = 0;  
 C_L_q = 0.2034;
@@ -59,35 +57,20 @@ C_m_de = -0.0344;
 %%%%%%%%% Longitudinal Derivatives %%%%%%%%%%
 
 X_u = - q_bar_1 * S * (C_D_u + 2 * C_D_1) / (m * U_1);
- 
 X_T_u = q_bar_1 * S * (C_T_x_u + 2 * C_T_x_1) / (m * U_1);
- 
 X_alpha = - q_bar_1 * S * (C_D_alpha - C_L_1) / m;
- 
 X_de = - q_bar_1 * S * C_D_de / m;
- 
 Z_u = - q_bar_1 * S * (C_L_u + 2 * C_L_1) / (m * U_1);
- 
 Z_alpha = - q_bar_1 * S * (C_L_alpha + C_D_1) / m;
- 
 Z_alpha_dot = - q_bar_1 * S * c_bar * C_L_alpha_dot / (2 * m * U_1);
- 
 Z_q = - q_bar_1 * S * c_bar * C_L_q / (2 * m * U_1);
- 
 Z_de = - q_bar_1 * S * C_L_de / m;
- 
 M_u = q_bar_1 * S * c_bar * (C_m_u + 2 * C_m_1) / (I_yy * U_1);
- 
 M_T_u = q_bar_1 * S * c_bar * (C_m_T_u + 2 * C_m_T_1) / (I_yy * U_1);
- 
 M_alpha = q_bar_1 * S * c_bar * C_m_alpha / I_yy;
- 
 M_T_alpha = q_bar_1 * S * c_bar * C_m_T_alpha / I_yy;
- 
 M_alpha_dot = q_bar_1 * S * c_bar^2 * C_m_alpha_dot / (2 * I_yy * U_1);
- 
 M_q = q_bar_1 * S * c_bar^2 * C_m_q / (2 * I_yy * U_1);
- 
 M_de = q_bar_1 * S * c_bar * C_m_de / I_yy;
 
 %%%%%%%%%%%%%%%%% Xdot = Ax + Bu : Longitudinal %%%%%%%%%%%%%%%%%

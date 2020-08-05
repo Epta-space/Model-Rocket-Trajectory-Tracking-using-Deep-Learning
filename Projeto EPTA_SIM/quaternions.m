@@ -7,7 +7,6 @@ fi      = x(1);
 theta   = x(2);
 psi     = x(3);
 
-
 q0 = cos(psi/2)*cos(theta/2)*cos(fi/2)-sin(psi/2)*sin(theta/2)*sin(fi/2);
 q1 = sin(theta/2)*sin(fi/2)*cos(psi/2)+sin(psi/2)*cos(theta/2)*cos(fi/2);
 q2 = sin(theta/2)*cos(psi/2)*cos(fi/2)-sin(psi/2)*sin(fi/2)*cos(theta/2);

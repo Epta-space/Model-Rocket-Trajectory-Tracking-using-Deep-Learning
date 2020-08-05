@@ -1,6 +1,4 @@
 function y = rocket_sim_V3(t, x)
-% y = [ u. v. w. P. Q. R. fi. theta. psi. xe. ye. ze.]
-% x = [ u  v  w  P  Q  R  fi  theta  psi xe ye ze]
 
 global T g m I
 
